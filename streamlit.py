@@ -6,14 +6,11 @@ import pandas as pd
 import time
 import matplotlib.pyplot as plt
 import pickle
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
 import datetime
-from pydatetime import daycreator
 import pickle
 import re
 
-alpha = pickle.load(open("save.p", "rb"))
+alpha = pickle.load(open("gsheet_pickle.p", "rb"))
 # dropping columns for final assymbly
 alpha = alpha.drop(['moddeptime', 'mod_arr_time', 'Freq',
                     'Modeffdate', 'moddisdate', 'actual_days'], axis=1)
@@ -33,35 +30,38 @@ my_list_ray = ['D1', 'A1', 'D2', 'A2', 'D3', 'A3', 'D4',
                'A25', 'D26', 'A26', 'D27', 'A27', 'D28', 'A28', 'D29', 'A29', 'D30',
                'A30', 'D31', 'A31']
 filter_my_list_ray = list(filter(lambda x: "A" not in x, my_list_ray))
-print(list(filter_my_list_ray))
+
 dep_count_list = []
 
+dep_airport_list = list(alpha['Dept Arp'].unique())
+dep_airport_list.sort()
+
+st.set_page_config(page_title=" Jebah", page_icon="favicon.ico", layout="wide")
+option = st.sidebar.selectbox(
+    'Please select Airport?',
+    dep_airport_list)
+# - [ ]using html in streamlit , looks dreadful
+title_style = """
+<div style="background-color:#001B94",padding:5px;">
+<h1 style ="color:white">Flight Details for Station 💉💉 </h1>
+</div>
+"""
+st.markdown(title_style, unsafe_allow_html=True)
+
+
+'Airport selected:', option
 
 for india in filter_my_list_ray:
-    test_df = alpha.loc[(alpha["Dept Arp"] == "DEL") &
+    test_df = alpha.loc[(alpha["Dept Arp"] == option) &
                         (alpha["variable"] == india)]
     test_df = test_df[test_df.value != False].sort_values(by="value")
     dep_count_list.append(test_df["value"].count())
 
-st.write("Here's our first attempt at using data to create a table:")
+
 chart_data = pd.DataFrame({
-    'Day': filter_my_list_ray,
+    'Day of month': filter_my_list_ray,
     'Departure_Count': dep_count_list
 })
-
 st.line_chart(chart_data)
 if st.checkbox('Show dataframe'):
     st.line_chart(chart_data)
-
-
-option = st.selectbox(
-    'please select a station?',
-    chart_data['Day'])
-
-'You selected: ', option
-
-option = st.sidebar.selectbox(
-    'Which number do you like best?',
-    chart_data['Day'])
-
-'You selected:', option
