@@ -139,4 +139,4 @@ cython_debug/
 
 
 # password
-./crudg.json
+/crudg.json
