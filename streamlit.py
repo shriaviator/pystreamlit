@@ -4,7 +4,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import time
-from vega_datasets import data
+# from vega_datasets import data
 import pickle
 import datetime
 import pickle
@@ -61,7 +61,7 @@ for india in day_sorted_list:
 chart_data = pd.DataFrame(dep_count_list, columns=[
                           'DepDay', 'DepType', "Dep_Count"])
 # st.line_chart(chart_data)
-my_chart = alt.Chart(chart_data).mark_bar(point=True).encode(
+my_chart = alt.Chart(chart_data).mark_line(point=True).encode(
     x=alt.X('DepDay', sort=day_sorted_list, title='Days Of The Month'
             ),
     y=alt.Y('Dep_Count:Q', title='Count'),
@@ -78,7 +78,7 @@ my_chart = alt.Chart(chart_data).mark_bar(point=True).encode(
     title='Operation Details Per Day in Station'
 )
 
-text_chart = my_chart.mark_bar(
+text_chart = my_chart.mark_text(
     align='left',
     baseline='top',
 
@@ -93,7 +93,7 @@ if page == "Introduction":
     st . subheader("What is it trying to solve ? ")
     st . markdown(""" 
     - Looking at operating schedule , schedule work and unscheduled work for a medium to large  station is still done manually ,The system still runs but is not optimized
-    - Tv remote example {keyword interface }
+    - **Analogy** -> If one were asked to assemble a Television before watching  , and contrast with the real world where we just use a remote and start watching Telivision.
     - We are just trying to provide a interface or tools for people to make decision instead of concentrating on making the tools  
     - Engineering operations planning is currently manually done in almost all airline and mro operations in India , The procedures are nedds to made available for the year 2021 """)
     st . sidebar . write(
@@ -102,21 +102,21 @@ if page == "Introduction":
 if page == "MonthView":
     title_style = """
     <div style="background-color:#001B94",padding:5px;">
-    <h1 style ="color:white">Flight Schedule for Station 💉💉 </h1>
+    <h1 style ="color:white">Flight Schedule for Station 📈📈 </h1>
     </div>
     """
     st.markdown(title_style, unsafe_allow_html=True)
     'Airport selected:', option
     st.altair_chart(tesla, use_container_width=True)
 
-if page == "Test_One":
-    source = data.stocks()
-    print()
+# if page == "Test_One":
+#     source = data.stocks()
+#     print()
 
-    ref_chart = alt.Chart(source).mark_line().encode(
-        x='date',
-        y='price',
-        color='symbol',
-        strokeDash='symbol',
-    )
-    st.altair_chart(ref_chart, use_container_width=True)
+#     ref_chart = alt.Chart(source).mark_line().encode(
+#         x='date',
+#         y='price',
+#         color='symbol',
+#         strokeDash='symbol',
+#     )
+#     st.altair_chart(ref_chart, use_container_width=True)

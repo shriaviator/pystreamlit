@@ -27,6 +27,10 @@
  - [x] 6E 497 STV HYD is not appearing T/s required
       - remove_duplicate_flights(dataframe)
       - dataframe = dataframe.drop_duplicates(subset=['Flt Desg'])
+- [MultiLine Tooltip  for line chart](https://altair-viz.github.io/gallery/multiline_tooltip.html)
+- [Contact Page To be Built](https://share.streamlit.io/ozgurdugmeci/easy-app/main/app.py)
+- Test for correctness after all modification needs to be done 
+- Pseudo code Flight number - Text Comment _- Number of operation 
 
 ## The Zen of Python, will be adhered !!
 
