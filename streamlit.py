@@ -95,7 +95,7 @@ if page == "Introduction":
     - Looking at operating schedule , schedule work and unscheduled work for a medium to large  station is still done manually ,The system still runs but is not optimized
     - **Analogy** -> If one were asked to assemble a Television before watching  , and contrast with the real world where we just use a remote and start watching Telivision.
     - We are just trying to provide a interface or tools for people to make decision instead of concentrating on making the tools  
-    - Engineering operations planning is currently manually done in almost all airline and mro operations in India , The procedures are nedds to made available for the year 2021 """)
+    - Engineering operations planning is currently manually done in almost all airline and mro operations  , The procedures are nedds to made available for the year 2021 """)
     st . sidebar . write(
         "General Introduction")
 
