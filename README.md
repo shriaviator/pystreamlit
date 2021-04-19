@@ -18,10 +18,10 @@
 
 ## To do list 
 
- - [ ] make pickle object with multiple variables 
+ - [x] make pickle object with multiple variables 
   
  - [x] Airport List Sort
- - [ ] When dropping value based in the master dataset are there any edge cases 
+ - [x] When dropping value based in the master dataset are there any edge cases 
  - [ ] "Text Comment"]=="A124" is a edge case  Vimp
  - [ ] "Text Comment"]=="A107" is a edge case  Vimp
  - [x] 6E 497 STV HYD is not appearing T/s required

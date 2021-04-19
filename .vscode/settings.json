@@ -1,0 +1,7 @@
+{
+  "jupyter.jupyterServerType": "local",
+  "python.pythonPath": "env\\Scripts\\python.exe",
+  "python.analysis.extraPaths": [
+    "./testArea"
+  ]
+}
