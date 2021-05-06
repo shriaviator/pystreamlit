@@ -10,8 +10,8 @@ import datetime
 import pickle
 import re
 import altair as alt
-import ptvsd
-ptvsd.enable_attach(address=('localhost', 5678))
+# import ptvsd
+# ptvsd.enable_attach(address=('localhost', 5678))
 # Only include this line if you always wan't to attach the debugger
 # ptvsd.wait_for_attach()
 st.set_page_config(page_title=" Jebah", page_icon="favicon.ico", layout="wide")

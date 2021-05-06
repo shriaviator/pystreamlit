@@ -1,7 +1,8 @@
 {
   "jupyter.jupyterServerType": "local",
-  "python.pythonPath": "env\\Scripts\\python.exe",
+  "python.pythonPath": "C:\\Users\\user.DESKTOP-A3TPLES\\miniconda3\\envs\\py38DS\\python.exe",
   "python.analysis.extraPaths": [
     "./testArea"
-  ]
+  ],
+  "python.formatting.provider": "black"
 }

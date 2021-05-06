@@ -1,0 +1,58 @@
+# %lprun -f masterDfMaker masterDfMaker(testpd)
+
+
+Timer unit: 1e-07 s
+
+Total time: 78.1195 s
+File: <ipython-input-38-631014f6375c>
+Function: masterDfMaker at line 1
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+     1                                           def masterDfMaker(paramdf):
+     2                                           
+     3                                               # list of Comment List which are unique 
+     4         1      47472.0  47472.0      0.0      textCommentList = paramdf["Text_Comment"].unique()
+     5                                               # list(array of all days in our data )
+     6         1      59927.0  59927.0      0.0      uniqueDates = np.sort(testpd["aocs_dep"].dt.day.unique())
+     7                                           
+     8         1         26.0     26.0      0.0      masterList=[]
+     9       253       4192.0     16.6      0.0      for xray in textCommentList:
+    10      7812     188954.0     24.2      0.0          for alpha in uniqueDates:
+    11                                                       # filtering dataframe on CommentValue and uniqueDateValue
+    12      7560  550941369.0  72875.8     70.5              x_df =paramdf.loc[(paramdf["Text_Comment"] == xray) & (paramdf["cal_date"] == alpha)]
+    13                                                       # check if dataframe is empty
+    14      7560     660916.0     87.4      0.1              if len(x_df) == 0:
+    15       568       6297.0     11.1      0.0                  continue
+    16                                                       # sorting by aocs_dep for safety 
+    17      6992  154535613.0  22101.8     19.8              x_df= x_df.sort_values(by=["aocs_dep"], ascending=True)
+    18      6992   73329044.0  10487.6      9.4              x_df = addlastRowArrDep(x_df)
+    19      6992    1421486.0    203.3      0.2              [masterList.append(zulu)  for zulu in x_df ] 
+    20         1         10.0     10.0      0.0      return masterList
+
+Timer unit: 1e-07 s
+
+Total time: 324.011 s File: Function: masterDfMaker at line 1
+Line # Hits Time Per Hit % Time Line Contents
+
+ 1                                           def masterDfMaker(paramdf):
+ 2                                           
+ 3                                               # list of Comment List which are unique 
+ 4         1      51225.0  51225.0      0.0      textCommentList = paramdf["Text_Comment"].unique()
+ 5                                               # list(array of all days in our data )
+ 6         1     246722.0 246722.0      0.0      uniqueDates = np.sort(testpd["aocs_dep"].dt.date.unique())
+ 7                                           
+ 8         1         35.0     35.0      0.0      masterList=[]
+ 9       254       4202.0     16.5      0.0      for xray in textCommentList:
+10      8855     157247.0     17.8      0.0          for alpha in uniqueDates:
+11                                                       # filtering dataframe on CommentValue and uniqueDateValue
+12      8602 2971737440.0 345470.5     91.7              x_df =paramdf.loc[(paramdf["Text_Comment"]== xray) & (paramdf["aocs_dep"].dt.date==alpha)]
+13                                                       # check if dataframe is empty
+14      8602     837188.0     97.3      0.0              if len(x_df) == 0:
+15       679       8457.0     12.5      0.0                  continue
+16                                                       # sorting by aocs_dep for safety 
+17      7923  176552184.0  22283.5      5.4              x_df= x_df.sort_values(by=["aocs_dep"], ascending=True)
+18      7923   88763020.0  11203.2      2.7              x_df = addlastRowArrDep(x_df)
+19      7923    1751204.0    221.0      0.1              [masterList.append(zulu)  for zulu in x_df ] 
+20         1          9.0      9.0      0.0      return masterList
+
